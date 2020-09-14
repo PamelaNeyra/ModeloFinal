@@ -30,25 +30,44 @@ class prediccion(Resource):
 		resultado = prediccion.tolist()
 
 		clasificacion = ''
+		data = {}
+		data['regla'] = []
+		data['resultado'] = []
 
 		if resultado[0] == 0:
 			clasificacion = 'Forme Fruste'
-			listas = decidirReglaFormeFruste(x[0])
+			data['resultado'].append({
+				'clasificacion':clasificacion
+				})
+			data['regla'].append({
+			    'valor': decidirReglaFormeFruste(x[0])})
 			
 		elif resultado[0] == 1:
 			clasificacion = 'Queratocono'
-			listas = decidirReglaSubclinico(x[0])
+			data['resultado'].append({
+				'clasificacion':clasificacion
+				})
+			data['regla'].append({
+			    'valor': decidirReglaSubclinico(x[0])})
 			
 		elif resultado[0] == 2:
 			clasificacion = 'Subclinico'
-			listas = decidirReglaQueratocono(x[0])
+			data['resultado'].append({
+				'clasificacion':clasificacion
+				})
+			data['regla'].append({
+			    'valor': decidirReglaQueratocono(x[0])})
 			
 		elif resultado[0] == 3:
 			clasificacion = 'Ojo sano'
-			listas = decidirReglaSano(x[0])
+			data['resultado'].append({
+				'clasificacion':clasificacion
+				})
+			data['regla'].append({
+			    'valor': decidirReglaSano(x[0])})
 			
-		listas.append(clasificacion)
-		return listas
+
+		return data
 
 
 api.add_resource(prediccion,'/prediccion/<archivo>')
