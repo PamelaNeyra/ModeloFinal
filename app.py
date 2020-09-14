@@ -46,14 +46,14 @@ class prediccion(Resource):
 			data['resultado'].append({
 				'clasificacion':clasificacion
 				})
-			data['regla'].append(decidirReglaSubclinico(x[0]))
+			data['regla'].append(decidirReglaQueratocono(x[0]))
 			
 		elif resultado[0] == 2:
 			clasificacion = 'Subclinico'
 			data['resultado'].append({
 				'clasificacion':clasificacion
 				})
-			data['regla'].append(decidirReglaQueratocono(x[0]))
+			data['regla'].append(decidirReglaSubclinico(x[0]))
 			
 		elif resultado[0] == 3:
 			clasificacion = 'Ojo sano'
